@@ -1,62 +1,70 @@
 package com.maxnumgenerics;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;/**
+ * here i have refactored the class as well as methods.
+ * Here it's a Generic class having type E.
+ * Took 3 values.
+ * @param <E>
+ */
 
-public class FindMaximum {
+class TestMaximum<E extends Comparable<E>> {
+    E firstValue, secondValue, thirdValue;
+
     /**
-     * here i have created a parameterised constructor having given parameters.
-     * First i have taken numberOne is maxNumber
-     * then i used compareTo method which will compare with numberTwo..and gradually compare with numberThree also.
-     *
-     * @param numberOne
-     * @param numberTwo
-     * @param numberThree
-     * @return maxNumber
+     * Here this one is a parameterised constructor having these parameters to initiate the values.
+     * @param firstValue
+     * @param secondValue
+     * @param thirdValue
      */
-    public int findMaxNumber(Integer numberOne, Integer numberTwo, Integer numberThree) {
-        Integer maxNumber = numberOne;
-        if (numberTwo.compareTo(maxNumber) > 0) {
-            maxNumber = numberTwo;
-        }
-        if (numberThree.compareTo(maxNumber) > 0) {
-            maxNumber = numberThree;
-        }
-        return maxNumber;
+    TestMaximum(E firstValue, E secondValue, E thirdValue) {
+        this.firstValue = firstValue;
+        this.secondValue = secondValue;
+        this.thirdValue = thirdValue;
     }
 
     /**
-     * As above it'll work the same but having only float values.
-     *
-     * @param numberOne
-     * @param numberTwo
-     * @param numberThree
-     * @return
+     * This one is a default constructor.
      */
-
-    public float findFloatMaxNumber(Float numberOne, Float numberTwo, Float numberThree) {
-        Float maxNumber = numberOne;
-        if (numberTwo.compareTo(maxNumber) > 0) {
-            maxNumber = numberTwo;
-        }
-        if (numberThree.compareTo(maxNumber) > 0) {
-            maxNumber = numberThree;
-        }
-        return maxNumber;
+    public TestMaximum() {
     }
+
     /**
-     * As above it'll work the same but having only String values.
-     * @param numberOne
-     * @param numberTwo
-     * @param numberThree
+     * Here i have created a method of return type E.
      * @return
      */
+    public E testMaximum() {
+        return testMaximum(firstValue, secondValue, thirdValue);
+    }
 
-    public String findMaxString(String numberOne, String numberTwo, String numberThree) {
-        String maxString = numberOne;
-        if (numberTwo.compareTo(maxString) > 0) {
-            maxString = numberTwo;
+    /**
+     * In this method ..it'll check the values and give the maximum as an output.
+     * @param firstValue
+     * @param secondValue
+     * @param thirdValue
+     * @param <E>
+     * @return
+     */
+    public static <E extends Comparable<E>> E testMaximum(E firstValue, E secondValue, E thirdValue) {
+        E maxValue = firstValue;
+        if (secondValue.compareTo(maxValue) > 0) {
+            maxValue = secondValue;
         }
-        if (numberThree.compareTo(maxString) > 0) {
-            maxString = numberThree;
+        if (thirdValue.compareTo(maxValue) > 0) {
+            maxValue = thirdValue;
         }
-        return maxString;
+        return maxValue;
+    }
+
+    /**
+     * here i have created an array which will take more than one parameter.
+     * @param args
+     * @param <E>
+     * @return
+     */
+    public static <E extends Comparable<E>> E testMaximumMore(E... args) {
+        List<E> list = Arrays.asList(args);
+        Collections.sort(list);
+        return list.get(list.size() - 1);
     }
 }

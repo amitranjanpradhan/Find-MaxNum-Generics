@@ -2,64 +2,75 @@ package com.maxnumgenerics;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+/**
+ * here in this test class i have created an object of main class and call all the methods of test cases.
+ */
 public class FindMaxTest {
+    TestMaximum testMaxObj = new TestMaximum();
     /**
-     * here i have created an object of FindMaximum class.
-     * created three test cases which will check and give the test case result.
+     * Here i have created almost 12 test cases which will check the max and according to the test cases it'll get passed.
      */
-    FindMaximum findMax = new FindMaximum();
     @Test
-    void ifNumberOneIsMaxReturnTrue() {
-        Assertions.assertEquals(100, findMax.findMaxNumber(100,50,25));
+    void ifIntegerNumberOneIsMaxReturnTrue() {
+        TestMaximum<Integer> testMaximumInteger = new TestMaximum<>(100, 50, 25);
+        Assertions.assertEquals(100, testMaximumInteger.testMaximum());
     }
 
     @Test
-    void ifNumberTwoIsMaxReturnTrue() {
-        Assertions.assertEquals(100, findMax.findMaxNumber(50, 100, 25));
+    void ifIntegerNumberTwoIsMaxReturnTrue() {
+        TestMaximum<Integer> testMaximumInteger = new TestMaximum<>(50, 100, 25);
+        Assertions.assertEquals(100, testMaximumInteger.testMaximum());
     }
 
     @Test
-    void ifNumberThreeIsMaxReturnTrue() {
-        Assertions.assertEquals(100, findMax.findMaxNumber(25, 50, 100));
+    void ifIntegerNumberThreeIsMaxReturnTrue() {
+        TestMaximum<Integer> testMaximumInteger = new TestMaximum<>(25, 50, 100);
+        Assertions.assertEquals(100, testMaximumInteger.testMaximum());
     }
-    /**
-     * Similarly as above i have written test cases
-     * created three test cases which will check and give the test case result.
-     */
 
     @Test
     void ifFloatNumberOneIsMaxReturnTrue() {
-        Assertions.assertEquals(10.0, findMax.findFloatMaxNumber(10.0F, 5.0F, 2.5F));
+        TestMaximum<Float> testMaximumInteger = new TestMaximum<>(10.0F, 5.0F, 2.5F);
+        Assertions.assertEquals(10.0F, testMaximumInteger.testMaximum());
     }
-
     @Test
     void ifFloatNumberTwoIsMaxReturnTrue() {
-        Assertions.assertEquals(10.0, findMax.findFloatMaxNumber(5.0F, 10.0F, 2.5F));
+        TestMaximum<Float> testMaximumInteger = new TestMaximum<>(5.0F, 10.0F, 2.5F);
+        Assertions.assertEquals(10.0F, testMaximumInteger.testMaximum());
     }
-
     @Test
     void ifFloatNumberThreeIsMaxReturnTrue() {
-        Assertions.assertEquals(10.0, findMax.findFloatMaxNumber(2.5F, 5.0F, 10.0F));
+        TestMaximum<Float> testMaximumInteger = new TestMaximum<>(2.5F, 5.0F, 10.0F);
+        Assertions.assertEquals(10.0F, testMaximumInteger.testMaximum());
     }
-    /**
-     * Similarly as above i have written test cases
-     * created three test cases which will check and give the test case result.
-     * Here i have taken String as values.
-     */
-
     @Test
-    void ifStringNumberOneIsMaxReturnTrue() {
-        Assertions.assertEquals("peach", findMax.findMaxString("banana", "peach", "apple"));
+    void ifStringOneIsMaxReturnTrue() {
+        TestMaximum<String> testMaximumInteger = new TestMaximum<>("banana", "peach", "apple");
+        Assertions.assertEquals("peach", testMaximumInteger.testMaximum());
     }
 
     @Test
-    void ifStringNumberTwoIsMaxReturnTrue() {
-        Assertions.assertEquals("peach", findMax.findMaxString("apple", "banana", "peach"));
+    void ifStringTwoIsMaxReturnTrue() {
+        TestMaximum<String> testMaximumInteger = new TestMaximum<>("apple", "banana", "peach");
+        Assertions.assertEquals("peach", testMaximumInteger.testMaximum());
+    }
+    @Test
+    void ifStringThreeIsMaxReturnTrue() {
+        TestMaximum<String> testMaximumInteger = new TestMaximum<>("peach", "apple", "banana");
+        Assertions.assertEquals("peach", testMaximumInteger.testMaximum());
+    }
+    @Test
+    void giveMaxInteger() {
+        Assertions.assertEquals(60, testMaxObj.testMaximumMore(1, 10, 13, 17, 25, 43, 21, 56, 60));
     }
 
     @Test
-    void ifStringNumberThreeIsMaxReturnTrue() {
-        Assertions.assertEquals("peach", findMax.findMaxString("peach", "apple", "banana"));
+    void giveMaxFloat() {
+        Assertions.assertEquals(60.0F, testMaxObj.testMaximumMore(1.0F, 10.0F, 13.0F, 1.70F, 2.05F, 4.3F, 21.0F, 56.0F, 60.0F));
+    }
+
+    @Test
+    void  giveMaxString() {
+        Assertions.assertEquals("peach", testMaxObj.testMaximumMore("apple", "peach", "banana", "mango", "kiwi"));
     }
 }
